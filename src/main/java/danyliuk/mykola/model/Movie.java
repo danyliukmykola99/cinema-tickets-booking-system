@@ -41,7 +41,7 @@ public class Movie {
     public Set<Show> getScheduledShowsInDay(LocalDate date){
         return shows.stream()
                 .filter(Show::isScheduled)
-                .filter(s->s.getDate().equals(date))
+                .filter(s->s.getStart().toLocalDate().equals(date))
                 .collect(Collectors.toSet());
     }
 

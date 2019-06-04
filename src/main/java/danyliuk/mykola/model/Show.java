@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,10 +28,11 @@ public class Show {
     private Movie movie;
     @Enumerated(EnumType.STRING)
     private ShowStatus status;
-    private LocalDate date;
-    @Enumerated(EnumType.STRING)
-    private ShowTimeSlot timeSlot;
-    @OneToMany
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime start;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime finish;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
     public int soldCount(){
