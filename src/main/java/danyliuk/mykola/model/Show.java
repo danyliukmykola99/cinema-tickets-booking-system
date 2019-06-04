@@ -28,9 +28,7 @@ public class Show {
     private Movie movie;
     @Enumerated(EnumType.STRING)
     private ShowStatus status;
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime start;
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime finish;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Ticket> tickets;
