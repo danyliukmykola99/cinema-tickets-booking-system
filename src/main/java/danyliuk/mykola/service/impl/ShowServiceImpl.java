@@ -7,7 +7,9 @@ import danyliuk.mykola.service.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -92,5 +94,16 @@ public class ShowServiceImpl implements ShowService {
         }
         show.setTickets(tickets);
         showRepository.save(show);
+    }
+
+    @Override
+    public List<LocalDateTime> getAvailableTime() {
+        List<LocalDateTime> dateTimes = new LinkedList<>();
+        for(LocalDate date = LocalDate.now(); date.isBefore(LocalDate.now().plusDays(7)); date = date.plusDays(1)){
+            for(LocalTime time = LocalTime.of(9,0); time.isBefore(LocalTime.of(22,0)); time = time.plusHours(1)){
+                dateTimes.add(LocalDateTime.of(date,time));
+            }
+        }
+        return dateTimes;
     }
 }
