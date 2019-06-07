@@ -1,7 +1,7 @@
 package danyliuk.mykola.service;
 
-import danyliuk.mykola.model.Ticket;
-import danyliuk.mykola.model.User;
+import danyliuk.mykola.model.domain.Ticket;
+import danyliuk.mykola.model.domain.User;
 import danyliuk.mykola.service.exception.NotFoundException;
 
 import java.util.List;

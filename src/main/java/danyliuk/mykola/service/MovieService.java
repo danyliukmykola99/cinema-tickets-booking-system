@@ -1,6 +1,6 @@
 package danyliuk.mykola.service;
 
-import danyliuk.mykola.model.Movie;
+import danyliuk.mykola.model.domain.Movie;
 
 import java.util.List;
 import java.util.Optional;

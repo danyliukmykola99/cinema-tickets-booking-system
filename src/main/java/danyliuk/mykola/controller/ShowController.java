@@ -1,12 +1,11 @@
 package danyliuk.mykola.controller;
 
-import danyliuk.mykola.model.Show;
+import danyliuk.mykola.model.domain.Show;
+import danyliuk.mykola.model.dto.WeekScheduleDTO;
 import danyliuk.mykola.service.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -21,10 +20,11 @@ public class ShowController {
     private ShowService showService;
 
     @GetMapping("/")
-    public ModelAndView getShows(){
-        ModelAndView m = new ModelAndView("shows");
-        List<Show> shows = showService.findScheduled();
-        m.addObject("shows",shows);
+    public ModelAndView getSchedule(){
+        ModelAndView m = new ModelAndView("home");
+        List<Show> scheduledShowsForWeek = showService.findScheduled();
+        WeekScheduleDTO weekSchedule = new WeekScheduleDTO(scheduledShowsForWeek);
+        m.addObject("weekSchedule", weekSchedule);
         return m;
     }
 

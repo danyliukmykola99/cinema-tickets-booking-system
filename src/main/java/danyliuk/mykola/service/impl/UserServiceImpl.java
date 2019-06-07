@@ -1,6 +1,6 @@
 package danyliuk.mykola.service.impl;
 
-import danyliuk.mykola.model.User;
+import danyliuk.mykola.model.domain.User;
 import danyliuk.mykola.repository.UserRepository;
 import danyliuk.mykola.service.UserService;
 import danyliuk.mykola.service.exception.InvalidEmailException;

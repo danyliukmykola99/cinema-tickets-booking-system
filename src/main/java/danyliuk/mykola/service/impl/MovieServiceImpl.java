@@ -1,6 +1,6 @@
 package danyliuk.mykola.service.impl;
 
-import danyliuk.mykola.model.Movie;
+import danyliuk.mykola.model.domain.Movie;
 import danyliuk.mykola.repository.MovieRepository;
 import danyliuk.mykola.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;

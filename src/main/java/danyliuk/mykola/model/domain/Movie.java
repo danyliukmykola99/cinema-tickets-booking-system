@@ -1,4 +1,4 @@
-package danyliuk.mykola.model;
+package danyliuk.mykola.model.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table
+@Table(schema = "public", name = "movie")
 public class Movie {
 
     @Id

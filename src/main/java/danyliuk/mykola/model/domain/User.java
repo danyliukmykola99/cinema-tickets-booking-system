@@ -1,4 +1,4 @@
-package danyliuk.mykola.model;
+package danyliuk.mykola.model.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "user")
+@Table(schema = "public", name = "user")
 public class User {
 
     @Id
@@ -27,17 +27,17 @@ public class User {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    private RoleType role;
     private String name;
     @OneToMany(mappedBy = "user")
     private List<Ticket> tickets;
 
     public boolean isAdmin(){
-        return roleType.equals(RoleType.ADMIN);
+        return role.equals(RoleType.ADMIN);
     }
 
     public boolean isClient(){
-        return roleType.equals(RoleType.CLIENT);
+        return role.equals(RoleType.CLIENT);
     }
 
     @Override

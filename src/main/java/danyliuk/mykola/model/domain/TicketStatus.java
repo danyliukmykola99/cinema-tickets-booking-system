@@ -1,4 +1,4 @@
-package danyliuk.mykola.model;
+package danyliuk.mykola.model.domain;
 
 /**
  * @author Mykola Danyliuk

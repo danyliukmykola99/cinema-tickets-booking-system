@@ -1,6 +1,6 @@
 package danyliuk.mykola.service;
 
-import danyliuk.mykola.model.Show;
+import danyliuk.mykola.model.domain.Show;
 import danyliuk.mykola.service.exception.NotFoundException;
 
 import java.time.LocalDateTime;

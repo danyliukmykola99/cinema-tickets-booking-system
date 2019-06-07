@@ -1,4 +1,4 @@
-package danyliuk.mykola.model;
+package danyliuk.mykola.model.domain;
 
 import lombok.*;
 
@@ -15,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "ticket")
+@Table(schema = "public",name = "ticket")
 public class Ticket {
 
     @Id

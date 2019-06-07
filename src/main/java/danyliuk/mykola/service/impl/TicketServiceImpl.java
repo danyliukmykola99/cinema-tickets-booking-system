@@ -1,8 +1,8 @@
 package danyliuk.mykola.service.impl;
 
-import danyliuk.mykola.model.Ticket;
-import danyliuk.mykola.model.TicketStatus;
-import danyliuk.mykola.model.User;
+import danyliuk.mykola.model.domain.Ticket;
+import danyliuk.mykola.model.domain.TicketStatus;
+import danyliuk.mykola.model.domain.User;
 import danyliuk.mykola.repository.TicketRepository;
 import danyliuk.mykola.service.TicketService;
 import danyliuk.mykola.service.exception.NotFoundException;

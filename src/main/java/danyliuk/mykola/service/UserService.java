@@ -1,6 +1,6 @@
 package danyliuk.mykola.service;
 
-import danyliuk.mykola.model.User;
+import danyliuk.mykola.model.domain.User;
 import danyliuk.mykola.service.exception.InvalidEmailException;
 import danyliuk.mykola.service.exception.PasswordMissmatchException;
 

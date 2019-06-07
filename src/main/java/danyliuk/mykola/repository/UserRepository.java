@@ -1,6 +1,6 @@
 package danyliuk.mykola.repository;
 
-import danyliuk.mykola.model.User;
+import danyliuk.mykola.model.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

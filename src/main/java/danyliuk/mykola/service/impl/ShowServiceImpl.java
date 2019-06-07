@@ -1,6 +1,6 @@
 package danyliuk.mykola.service.impl;
 
-import danyliuk.mykola.model.*;
+import danyliuk.mykola.model.domain.*;
 import danyliuk.mykola.repository.ShowRepository;
 import danyliuk.mykola.service.ShowService;
 import danyliuk.mykola.service.exception.NotFoundException;

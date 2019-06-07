@@ -1,7 +1,7 @@
 package danyliuk.mykola.repository;
 
-import danyliuk.mykola.model.Show;
-import danyliuk.mykola.model.ShowStatus;
+import danyliuk.mykola.model.domain.Show;
+import danyliuk.mykola.model.domain.ShowStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
