@@ -22,13 +22,14 @@ import java.util.UUID;
 public class User {
 
     @Id
+    @Column(name = "id")
     private UUID id;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Ticket> tickets;
 
     public boolean isAdmin(){

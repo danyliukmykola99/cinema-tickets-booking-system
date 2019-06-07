@@ -21,9 +21,11 @@ public class Ticket {
     @Id
     private UUID id;
     @ManyToOne
+    @JoinColumn(name = "show_id")
     private Show show;
     private Double price;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
     private Integer seat;
     @Enumerated(EnumType.STRING)

@@ -12,13 +12,13 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 public class WebConfiguration {
 
-    @Bean
-    public ViewResolver internalResourceViewResolver() {
-        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setViewClass(JstlView.class);
-        bean.setPrefix("/");
-        bean.setSuffix(".jsp");
-        return bean;
-    }
+//    @Bean
+//    public ViewResolver internalResourceViewResolver() {
+//        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+//        bean.setViewClass(JstlView.class);
+//        bean.setPrefix("/");
+//        bean.setSuffix(".jsp");
+//        return bean;
+//    }
 
 }

@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author Mykola Danyliuk
@@ -25,13 +22,14 @@ public class Show {
     @Id
     private UUID id;
     @ManyToOne
+    @JoinColumn(name = "movie_id")
     private Movie movie;
     @Enumerated(EnumType.STRING)
     private ShowStatus status;
     private LocalDateTime start;
     private LocalDateTime finish;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Ticket> tickets;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "show")
+    private List<Ticket> tickets = new ArrayList<>();
 
     public int soldCount(){
         return (int) tickets.stream().filter(Ticket::isReserved).count();
