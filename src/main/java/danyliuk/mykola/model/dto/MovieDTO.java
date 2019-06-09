@@ -8,9 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -26,7 +24,7 @@ public class MovieDTO {
     private String title;
     private String description;
     private Integer reservedTicketsCount;
-    private Set<ShowDTO> shows;
+    private List<ShowDTO> shows;
 
     public MovieDTO(Movie movie){
         this.id = movie.getId();
@@ -36,7 +34,19 @@ public class MovieDTO {
                 .map(Show::getTickets)
                 .flatMap(Collection::stream)
                 .filter(Ticket::isReserved).count());
-        this.shows = movie.getShows().stream().map(ShowDTO::new).collect(Collectors.toSet());
+        this.shows = movie.getShows().stream().map(ShowDTO::new).collect(Collectors.toList());
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MovieDTO movieDTO = (MovieDTO) o;
+        return Objects.equals(id, movieDTO.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
