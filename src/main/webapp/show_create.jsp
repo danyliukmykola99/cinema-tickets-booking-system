@@ -6,13 +6,13 @@
   Time: 16:19
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Додавання сеансу</title>
 </head>
 <body>
-<form name="show" action="/shows/create" method="post">
+<form name="show" action="<c:url value="/shows/create"/>" method="post">
     <div class="form-group">
         <label for="movie">Фільм</label>
         <select id="movie" name="movieId">

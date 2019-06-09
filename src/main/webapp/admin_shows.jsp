@@ -1,9 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="${sessionScope['language']}">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Адміністраторська. Сеанси</title>
@@ -15,13 +14,13 @@
     <div class="container marketing">
 
         <div>
-            <a href="/shows/create">
+            <a href="<c:url value="/shows/create"/>">
                 <button type="button">Додати сеанс</button>
             </a>
         </div>
         <table>
             <tr>
-                <th scope="col">Назва фільму</th>
+                <th scope="col">Фільм</th>
                 <th scope="col">Дата</th>
                 <th scope="col">Час</th>
                 <th scope="col">Статус</th>
@@ -38,18 +37,18 @@
                     <td>${show.status}</td>
                     <td>${show.reservedTicketsCount}</td>
                     <td>
-                        <a href="/shows/cancel?showId=${show.id}">
-                            Скасувати сеанс
+                        <a href="<c:url value="/shows/cancel?showId=${show.id}"/>">
+                            Скасувати
                         </a>
                     </td>
                     <td>
-                        <a href="/shows/start?showId=${show.id}">
-                            Старт сеансу
+                        <a href="<c:url value="/shows/start?showId=${show.id}"/>">
+                            Стартувати
                         </a>
                     </td>
                     <td>
-                        <a href="/shows/finish?showId=${show.id}">
-                            Кінець сеансу
+                        <a href="<c:url value="/shows/finish?showId=${show.id}"/>">
+                            Завершити
                         </a>
                     </td>
                 </tr>
@@ -57,7 +56,6 @@
         </table>
 
     </div>
-
 </main>
 </body>
 </html>

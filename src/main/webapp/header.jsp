@@ -4,48 +4,53 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html lang="${sessionScope['language']}">
+<link rel="stylesheet" href="<c:url value="/css/header.css"/>"/>
 <body>
-<div class="navbar navbar-light bg-light navbar-expand-md" role="navigation">
+<div role="navigation">
 
-    <nav>
+    <ul>
+
+    <li>
         <a href="<c:url value="/"/>">Сеанси</a>
-    </nav>
+    </li>
 
     <sec:authorize access="hasRole('ADMIN')">
-        <nav>
+        <li>
             <a href="/admin/movies">Фільми.Адміністрування</a>
-        </nav>
+        </li>
     </sec:authorize>
 
     <sec:authorize access="hasRole('ADMIN')">
-        <nav>
+        <li>
             <a href="/admin/shows">Сеанси.Адміністрування</a>
-        </nav>
+        </li>
     </sec:authorize>
 
     <sec:authorize access="hasRole('CLIENT')">
-        <nav>
+        <li>
             <a href="/tickets">Квитки</a>
-        </nav>
+        </li>
     </sec:authorize>
 
     <sec:authorize access="!isAuthenticated()">
-        <nav>
+        <li style="float:right">
             <a href="/login">Ввійти</a>
-        </nav>
+        </li>
     </sec:authorize>
 
     <sec:authorize access="!isAuthenticated()">
-        <nav>
+        <li style="float:right">
             <a href="/register">Реєстрація</a>
-        </nav>
+        </li>
     </sec:authorize>
 
     <sec:authorize access="hasAnyRole('ADMIN','CLIENT')">
-        <nav>
+        <li style="float:right">
             <a href="/logout">Вийти</a>
-        </nav>
+        </li>
     </sec:authorize>
+
+    </ul>
 
 </div>
 </body>

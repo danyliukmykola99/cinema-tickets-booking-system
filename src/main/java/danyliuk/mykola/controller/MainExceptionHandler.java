@@ -13,7 +13,7 @@ public class MainExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})
     public final ModelAndView handleAllExceptions(Exception e, WebRequest request){
-        ModelAndView m = new ModelAndView("err");
+        ModelAndView m = new ModelAndView("error");
         m.addObject("errorMessage", e.toString());
         return m;
     }

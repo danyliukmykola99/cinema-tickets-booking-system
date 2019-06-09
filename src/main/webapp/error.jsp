@@ -1,11 +1,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Error page</title>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/500.css"/>
+    <link rel="stylesheet" href="<c:url value="/css/error.css"/>"/>
     <c:import url="includes.jsp"/>
 </head>
 <body>

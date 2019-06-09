@@ -10,18 +10,17 @@
     <c:import url="includes.jsp"/>
 </head>
 <body>
-<jsp:useBean id="weekSchedule" scope="request" type="danyliuk.mykola.model.dto.WeekScheduleDTO"/>
 <c:import url="header.jsp"/>
 <main role="main">
     <div class="container marketing">
-        Сьогодні
+        <c:set var="date" value="Сьогодні" scope="request"/>
         <c:set var="schedule" value="${weekSchedule.todaySchedule}" scope="request"/>
         <jsp:include page="movies_table.jsp"/>
-        Завтра
+        <c:set var="date" value="Завтра" scope="request"/>
         <c:set var="schedule" value="${weekSchedule.tomorrowSchedule}" scope="request"/>
         <jsp:include page="movies_table.jsp"/>
         <c:forEach items="${weekSchedule.nextFiveDaysSchedule}" var="daySchedule">
-            ${daySchedule.date}
+            <c:set var="date" value="${daySchedule.date}" scope="request"/>
             <c:set var="schedule" value="${daySchedule}" scope="request"/>
             <jsp:include page="movies_table.jsp"/>
         </c:forEach>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: mykola
@@ -11,7 +12,7 @@
     <title>Додавання фільму</title>
 </head>
 <body>
-<form name="movie" action="/movies/create" method="post">
+<form name="movie" action="<c:url value="/movies/create"/>" method="post">
     <div class="form-group">
         <label for="title">Назва</label>:
         <input class="form-control" name="title" id="title"/>

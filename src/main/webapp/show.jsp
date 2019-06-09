@@ -25,19 +25,22 @@
                 <tr>
                     <c:forEach items="${ticketRow}" var="ticket">
                         <td>
-                            <c:if test="${ticket.available}">
-                                <a href="/tickets/create?show_id=${show.id}&seat=${ticket.seat}">
-                                        ${ticket.seat}
-                                </a>
-                            </c:if>
+                            <c:choose>
+                                <c:when test="${ticket.available}">
+                                    <a href="<c:url value="/tickets/create?showId=${show.id}&seat=${ticket.seat}"/>">
+                                            ${ticket.seat}
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+                                    ${ticket.seat}
+                                </c:otherwise>
+                            </c:choose>
                         </td>
                     </c:forEach>
                 </tr>
             </c:forEach>
         </table>
-
     </div>
-
 </main>
 </body>
 </html>

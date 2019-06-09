@@ -2,6 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Admin Page. Movies</title>
@@ -9,12 +10,11 @@
 </head>
 <body>
 <c:import url="header.jsp"/>
-
 <main role="main">
     <div class="container marketing">
 
         <div>
-            <a href="/movies/create">
+            <a href="<c:url value="/movies/create"/>">
                 <button type="button">Додати фільм</button>
             </a>
         </div>
@@ -31,7 +31,7 @@
                     <td>${movie.description}</td>
                     <td>${movie.reservedTicketsCount}</td>
                     <td>
-                        <a href="/movies/cancel?movieId=${movie.id}">
+                        <a href="<c:url value="/movies/cancel?movieId=${movie.id}"/>">
                             Скасувати всі сеанси
                         </a>
                     </td>

@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Login Page - RepairAgency</title>
+    <title>Login Page</title>
     <c:import url="includes.jsp"/>
 </head>
 <body>

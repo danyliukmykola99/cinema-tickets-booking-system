@@ -62,13 +62,14 @@ public class MainController {
         return m;
     }
 
-    @PostMapping("/tickets/create")
+    @GetMapping("/tickets/create")
     public String createTicket(
             @RequestParam("showId") UUID showID,
-            @RequestParam("seat") Integer seat) throws NotFoundException {
-        User user = null;
+            @RequestParam("seat") Integer seat,
+            Authentication authentication) throws NotFoundException {
+        User user = userService.findByEmail(authentication.getName());
         ticketService.reserveTicket(showID, seat, user);
-        return "/shows/showId=" + showID;
+        return "redirect:/shows?showId=" + showID;
     }
 
     @GetMapping("/admin/shows")
