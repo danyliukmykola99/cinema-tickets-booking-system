@@ -14,23 +14,16 @@
 <c:import url="header.jsp"/>
 <main role="main">
     <div class="container marketing">
-        <c:forEach items="${weekSchedule.daySchedules}" var="daySchedule">
+        Сьогодні
+        <c:set var="schedule" value="${weekSchedule.todaySchedule}" scope="request"/>
+        <jsp:include page="movies_table.jsp"/>
+        Завтра
+        <c:set var="schedule" value="${weekSchedule.tomorrowSchedule}" scope="request"/>
+        <jsp:include page="movies_table.jsp"/>
+        <c:forEach items="${weekSchedule.nextFiveDaysSchedule}" var="daySchedule">
             ${daySchedule.date}
-            <table>
-                <c:forEach items="${daySchedule.movies}" var="movie">
-                    <tr>
-                        <td>${movie.title}</td>
-                        <c:forEach items="${movie.shows}" var="show">
-                            <td>
-                                <a href="<c:url value="/shows?showId=${show.id}"/>">
-                                        ${show.startTime}
-                                </a>
-                            </td>
-                        </c:forEach>
-                    </tr>
-                </c:forEach>
-            </table>
-            <hr/>
+            <c:set var="schedule" value="${daySchedule}" scope="request"/>
+            <jsp:include page="movies_table.jsp"/>
         </c:forEach>
     </div>
 </main>

@@ -14,7 +14,7 @@
     <div class="container marketing">
 
         <div>
-            <a href="/movie_create.jsp">
+            <a href="/movies/create">
                 <button type="button">Додати фільм</button>
             </a>
         </div>

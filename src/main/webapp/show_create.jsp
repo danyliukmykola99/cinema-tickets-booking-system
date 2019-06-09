@@ -12,7 +12,7 @@
     <title>Додавання сеансу</title>
 </head>
 <body>
-<form action="/shows/create" method="post">
+<form name="show" action="/shows/create" method="post">
     <div class="form-group">
         <label for="movie">Фільм</label>
         <select id="movie" name="movieId">

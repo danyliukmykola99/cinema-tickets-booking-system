@@ -35,8 +35,6 @@ public class WeekScheduleDTO {
             nextFiveDaysSchedule.add(new DayScheduleDTO(scheduledShowsForWeek, date));
         }
         this.nextFiveDaysSchedule = nextFiveDaysSchedule;
-        // TODO: 07.06.19 fix
-        this.daySchedules = nextFiveDaysSchedule;
     }
 
 }

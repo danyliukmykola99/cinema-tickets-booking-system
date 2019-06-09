@@ -1,6 +1,5 @@
 package danyliuk.mykola.model.dto;
 
-import danyliuk.mykola.model.domain.Movie;
 import danyliuk.mykola.model.domain.Show;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

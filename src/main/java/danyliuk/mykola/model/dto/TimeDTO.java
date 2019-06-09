@@ -15,6 +15,11 @@ public class TimeDTO {
     private String time;
 
     public TimeDTO(LocalDateTime dateTime){
-        this.time = dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm", Locale.US));
+        this.time = dateTime.format(DateTimeFormatter.ofPattern("dd-MM HH:mm", Locale.US));
+    }
+
+    @Override
+    public String toString() {
+        return time;
     }
 }

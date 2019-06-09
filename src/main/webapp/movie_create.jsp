@@ -11,7 +11,7 @@
     <title>Додавання фільму</title>
 </head>
 <body>
-<form action="/movies/create" method="post">
+<form name="movie" action="/movies/create" method="post">
     <div class="form-group">
         <label for="title">Назва</label>:
         <input class="form-control" name="title" id="title"/>

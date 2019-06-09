@@ -1,8 +1,6 @@
 package danyliuk.mykola.controller;
 
-import danyliuk.mykola.configuration.UserPrincipal;
 import danyliuk.mykola.model.domain.Movie;
-import danyliuk.mykola.model.domain.RoleType;
 import danyliuk.mykola.model.domain.Show;
 import danyliuk.mykola.model.domain.User;
 import danyliuk.mykola.model.dto.*;
@@ -15,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
@@ -112,8 +113,14 @@ public class MainController {
         return "redirect:/admin/movies";
     }
 
+    @GetMapping("/movies/create")
+    public String createMovie(Model model){
+        model.addAttribute("movie", new Movie());
+        return "movie_create";
+    }
+
     @PostMapping("/movies/create")
-    public String createMovie(@RequestBody Movie movie){
+    public String createMovie(@ModelAttribute("movie") Movie movie){
         movieService.save(movie);
         return "redirect:/admin/movies";
     }
@@ -122,7 +129,7 @@ public class MainController {
     public ModelAndView prepareShowCreatingParams(){
         ModelAndView m = new ModelAndView("show_create");
         List<MovieDTO> movies = movieService.findAll().stream().map(MovieDTO::new).collect(Collectors.toList());
-        List<TimeDTO> times = showService.getAvailableTime().stream().map(TimeDTO::new).collect(Collectors.toList());
+        List<LocalDateTime> times = showService.getAvailableTime();
         m.addObject("movies", movies);
         m.addObject("times", times);
         m.addObject("show", new ShowDTO());
@@ -130,10 +137,10 @@ public class MainController {
     }
 
     @PostMapping("/shows/create")
-    public String createShow(@RequestBody ShowDTO show){
+    public String createShow(@ModelAttribute("show") ShowDTO show){
         UUID movieId = show.getMovieId();
-        LocalDateTime startTime = LocalDateTime.parse(show.getStartDateTime());
-        showService.create(movieId, startTime, startTime.plusHours(2));
+        LocalDateTime start = LocalDateTime.parse(show.getStartDateTime());
+        showService.create(movieId, start, start.plusHours(2));
         return "redirect:/admin/shows";
     }
 

@@ -19,6 +19,5 @@ public interface ShowService {
     void startByShowID(UUID showID) throws NotFoundException;
     void finishByShowID(UUID showID) throws NotFoundException;
     void create(UUID movieID, LocalDateTime start, LocalDateTime finish);
-
     List<LocalDateTime> getAvailableTime();
 }
