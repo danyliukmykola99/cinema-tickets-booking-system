@@ -1,14 +1,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope['language']}"/>
-<fmt:setBundle basename="repair_agency_localization"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="includes.jsp"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Server error - RepairAgency</title>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/500.css"/>
+          href="${pageContext.request.contextPath}/css/500.css"/>
     <c:import url="includes.jsp"/>
 </head>
 <body>

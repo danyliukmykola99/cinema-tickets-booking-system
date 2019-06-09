@@ -3,47 +3,49 @@ package danyliuk.mykola.service.impl;
 import danyliuk.mykola.model.domain.User;
 import danyliuk.mykola.repository.UserRepository;
 import danyliuk.mykola.service.UserService;
-import danyliuk.mykola.service.exception.InvalidEmailException;
-import danyliuk.mykola.service.exception.PasswordMissmatchException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author Mykola Danyliuk
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Override
     public void save(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
     @Override
-    public User login(String email, String password) throws InvalidEmailException, PasswordMissmatchException {
-        Optional<User> fromDB = findByEmail(email);
-        if (!fromDB.isPresent()) {
-            throw new InvalidEmailException();
-        } else {
-            if(!fromDB.get().getPassword().equals(password)){
-                throw new PasswordMissmatchException();
-            }
+    public void login(String email, String password) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+        authenticationManager.authenticate(token);
+        if(token.isAuthenticated()){
+            SecurityContextHolder.getContext().setAuthentication(token);
         }
-        return fromDB.get();
     }
 
     @Override
-    public boolean emailTaken(String email) {
-        return findByEmail(email).isPresent();
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
     }
 
-    @Override
-    public Optional<User> findByEmail(String email){
-        return userRepository.findByEmail(email);
-    }
 }

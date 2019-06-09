@@ -22,22 +22,22 @@ import java.util.UUID;
 public class User {
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private UUID id;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private RoleType role;
-    private String name;
     @OneToMany(mappedBy = "user")
     private List<Ticket> tickets;
 
     public boolean isAdmin(){
-        return role.equals(RoleType.ADMIN);
+        return role.equals(RoleType.ROLE_ADMIN);
     }
 
     public boolean isClient(){
-        return role.equals(RoleType.CLIENT);
+        return role.equals(RoleType.ROLE_CLIENT);
     }
 
     @Override

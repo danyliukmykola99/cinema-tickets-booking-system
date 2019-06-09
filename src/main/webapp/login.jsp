@@ -1,10 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib prefix="info" tagdir="/WEB-INF/tags" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope['language']}"/>
-<fmt:setBundle basename="repair_agency_localization"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,12 +17,12 @@
             <div class="row">
                 <div class="col-6">
                     <div class="card bg-light card-body mb-3">
-                        <form action="${pageContext.request.contextPath}/app/login" method="post">
+                        <form action="/login" method="post">
                             <div class="form-group">
                                 <label for="email">Емейл</label>:
                                 <input type="text"
                                        id="email"
-                                       name="email"
+                                       name="username"
                                        class="form-control"
                                        autofocus="autofocus"
                                        placeholder="Username"/>
@@ -55,12 +51,12 @@
                 </div>
                 <div class="col-6">
                     <h3 class="row">
-                        <a class="mx-auto badge badge-info" href="<c:url value="/register.jsp"/>">
+                        <a class="mx-auto badge badge-info" href="<c:url value="/register"/>">
                             Зареєструватись
                         </a>
                     </h3>
                     <h3 class="row">
-                        <a class="mx-auto badge badge-light" href="<c:url value="/app/home"/>">
+                        <a class="mx-auto badge badge-light" href="<c:url value="/"/>">
                             Головна
                         </a>
                     </h3>

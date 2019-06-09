@@ -7,7 +7,7 @@
     <c:import url="WEB-INF/fragment/includes.jsp"/>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/404.css"/>
+          href="${pageContext.request.contextPath}/css/404.css"/>
 </head>
 <body>
 <div class="container">

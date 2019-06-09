@@ -21,6 +21,7 @@ import java.util.*;
 public class Show {
 
     @Id
+    @GeneratedValue
     private UUID id;
     @ManyToOne
     @JoinColumn(name = "movie_id")

@@ -22,7 +22,7 @@
                         <td>${movie.title}</td>
                         <c:forEach items="${movie.shows}" var="show">
                             <td>
-                                <a href="/shows?showId=${show.id}">
+                                <a href="<c:url value="/shows?showId=${show.id}"/>">
                                         ${show.startTime}
                                 </a>
                             </td>

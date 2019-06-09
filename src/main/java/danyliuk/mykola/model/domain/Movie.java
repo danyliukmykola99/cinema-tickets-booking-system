@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 public class Movie {
 
     @Id
+    @GeneratedValue
     private UUID id;
     private String title;
     private String description;

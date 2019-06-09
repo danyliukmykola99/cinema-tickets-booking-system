@@ -1,68 +1,52 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="danyliuk.mykola.model.domain.User" %>
-<%
-    boolean nonAuth,admin = false,client = false;
-    Object o = session.getAttribute("user");
-    nonAuth = o == null;
-    if(o!=null){
-        User u = (User) o;
-        admin = u.isAdmin();
-        client = u.isClient();
-    }
-    pageContext.setAttribute("nonAuthorized",nonAuth);
-    pageContext.setAttribute("admin",admin);
-    pageContext.setAttribute("client",client);
-%>
 
 <html lang="${sessionScope['language']}">
 <body>
 <div class="navbar navbar-light bg-light navbar-expand-md" role="navigation">
 
     <nav>
-        <a href="/app/movies">Фільми</a>
+        <a href="<c:url value="/"/>">Сеанси</a>
     </nav>
 
-    <nav>
-        <a href="/app/shows">Сеанси</a>
-    </nav>
-
-    <c:if test="${admin}">
+    <sec:authorize access="hasRole('ADMIN')">
         <nav>
-            <a href="/app/admin/movies">Фільми.Адміністрування</a>
+            <a href="/admin/movies">Фільми.Адміністрування</a>
         </nav>
-    </c:if>
+    </sec:authorize>
 
-    <c:if test="${admin}">
+    <sec:authorize access="hasRole('ADMIN')">
         <nav>
-            <a href="/app/admin/shows">Сеанси.Адміністрування</a>
+            <a href="/admin/shows">Сеанси.Адміністрування</a>
         </nav>
-    </c:if>
+    </sec:authorize>
 
-    <c:if test="${client}">
+    <sec:authorize access="hasRole('CLIENT')">
         <nav>
-            <a href="/app/tickets">Квитки</a>
+            <a href="/tickets">Квитки</a>
         </nav>
-    </c:if>
+    </sec:authorize>
 
-    <c:if test="${nonAuthorized}">
+    <sec:authorize access="!isAuthenticated()">
         <nav>
-            <a href="/login.jsp">Ввійти</a>
+            <a href="/login">Ввійти</a>
         </nav>
-    </c:if>
+    </sec:authorize>
 
-    <c:if test="${nonAuthorized}">
+    <sec:authorize access="!isAuthenticated()">
         <nav>
-            <a href="/register.jsp">Реєстрація</a>
+            <a href="/register">Реєстрація</a>
         </nav>
-    </c:if>
+    </sec:authorize>
 
-    <c:if test="${client||admin}">
+    <sec:authorize access="hasAnyRole('ADMIN','CLIENT')">
         <nav>
-            <a href="/app/logout">Вийти</a>
+            <a href="/logout">Вийти</a>
         </nav>
-    </c:if>
+    </sec:authorize>
+
 </div>
 </body>
 </html>

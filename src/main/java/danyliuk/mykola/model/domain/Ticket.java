@@ -19,6 +19,7 @@ import java.util.UUID;
 public class Ticket {
 
     @Id
+    @GeneratedValue
     private UUID id;
     @ManyToOne
     @JoinColumn(name = "show_id")
